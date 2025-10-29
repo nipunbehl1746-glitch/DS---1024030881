@@ -1,0 +1,25 @@
+#include <iostream>
+
+int main() {
+    const int CAP = 10;
+    int a[CAP] = {1, 2, 3, 4, 5}; // current elements
+    int len = 5;                  // number of meaningful elements
+    int pos = 2;                  // desired insertion index (0-based)
+    int x = 99;                   // value to insert
+
+    if (pos < 0 || pos > len || len >= CAP) {
+        std::cout << "Insertion not possible\n";
+        return 0;
+    }
+
+    for (int i = len; i > pos; --i) {
+        a[i] = a[i - 1];
+    }
+    a[pos] = x;
+    ++len;
+
+    std::cout << "Updated array: ";
+    for (int i = 0; i < len; ++i) std::cout << a[i] << ' ';
+    std::cout << '\n';
+    return 0;
+}
